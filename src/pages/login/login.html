@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="pageBacgroundImage">
+
+  <div class="logo">
+    <img src="assets/icon/favicon.ico" alt="Ionic logo">
+  </div>
+  <ion-card>
+    <ion-card-content>
+      <form #loginForm="ngForm" novalidate>
+        <ion-list>
+          <ion-item>
+            <ion-label floating color="primary">Username</ion-label>
+            <ion-input [(ngModel)]="login.username" name="username" type="text" #username="ngModel" spellcheck="false" autocapitalize="off"
+              required>
+            </ion-input>
+          </ion-item>
+          <p ion-text [hidden]="username.valid || submitted == false" color="danger" padding-left>
+            Username is required
+          </p>
+
+          <ion-item>
+            <ion-label floating color="primary">Password</ion-label>
+            <ion-input [(ngModel)]="login.password" name="password" type="password" #password="ngModel" required>
+            </ion-input>
+          </ion-item>
+          <p ion-text [hidden]="password.valid || submitted == false" color="danger" padding-left>
+            Password is required
+          </p>
+        </ion-list>
+
+        <ion-row responsive-sm>
+          <ion-col>
+            <button ion-button class='buttonTextSmallCase' (click)="onLogin(loginForm)" type="submit" block>Teacher Login</button>
+          </ion-col>
+          <ion-col>
+            <button ion-button class='buttonTextSmallCase' (click)="onLogin(loginForm)" color="dark" block>Parent Login</button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
