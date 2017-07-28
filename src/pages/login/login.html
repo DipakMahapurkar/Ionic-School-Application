@@ -1,20 +1,22 @@
-<ion-content class="pageBacgroundImage">
-
-  <div class="logo">
-    <img src="assets/img/ic_user.svg" alt="Ionic logo">
-  </div>
+<ion-content>
   <ion-card>
+    <ion-item>
+        <ion-avatar>
+          <img src="assets/img/ic_user.svg">
+        </ion-avatar>
+      </ion-item>
+
     <ion-card-content>
       <form #loginForm="ngForm" novalidate>
-        <ion-list>
+        <ion-list no-lines>
           <ion-item>
-            <ion-label floating color="primary">Username</ion-label>
-            <ion-input [(ngModel)]="login.username" name="username" type="text" #username="ngModel" spellcheck="false" autocapitalize="off"
+            <ion-label floating color="primary">Email</ion-label>
+            <ion-input [(ngModel)]="login.email" name="email" type="text" #email="ngModel" spellcheck="false" autocapitalize="off"
               required>
             </ion-input>
           </ion-item>
-          <p ion-text [hidden]="username.valid || submitted == false" color="danger" padding-left>
-            Username is required
+          <p ion-text [hidden]="email.valid || submitted == false" color="danger" padding-left>
+            Email is required
           </p>
 
           <ion-item>
@@ -26,7 +28,6 @@
             Password is required
           </p>
         </ion-list>
-
         <ion-row responsive-sm>
           <ion-col>
             <button ion-button class='buttonTextSmallCase' (click)="onLogin(loginForm)" type="submit" block>Teacher Login</button>
@@ -38,5 +39,4 @@
       </form>
     </ion-card-content>
   </ion-card>
-
 </ion-content>
