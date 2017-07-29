@@ -1,9 +1,20 @@
 <ion-header>
   <ion-navbar color="secondary" [hideBackButton]="true">
     <ion-title>
-     Home
+      Home
     </ion-title>
   </ion-navbar>
+  <ion-toolbar>
+   
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="assets/img/ic_user.svg">
+        </ion-avatar>
+        <h2>{{userData?.student_name}}</h2>
+        <h3>{{userData?.student_parent_name}}</h3>
+        <p>{{userData?.student_class}}</p>
+      </ion-item>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding>

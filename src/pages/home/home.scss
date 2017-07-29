@@ -4,6 +4,11 @@ page-home {
         text-align: center;
     }
 
+    ion-avatar > img {
+        width: auto !important;
+        height: 70px !important;
+    }
+
     .cardPadding0{
         padding: 0px;        
     }

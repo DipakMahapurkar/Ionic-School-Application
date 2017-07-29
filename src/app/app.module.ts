@@ -4,11 +4,13 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { RestapiServiceProvider } from '../providers/restapi-service/restapi-service';
+import { PassDataServiceProvider } from '../providers/pass-data-service/pass-data-service';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { RestapiServiceProvider } from '../providers/restapi-service/restapi-ser
   imports: [
     HttpModule,
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot({name: 'SchoolApp',
+      driverOrder: ['indexeddb', 'sqlite', 'websql']})
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -32,7 +36,8 @@ import { RestapiServiceProvider } from '../providers/restapi-service/restapi-ser
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RestapiServiceProvider
+    RestapiServiceProvider,
+    PassDataServiceProvider
   ]
 })
 export class AppModule {}

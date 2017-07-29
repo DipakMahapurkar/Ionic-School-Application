@@ -6,6 +6,8 @@ import md5 from 'crypto-md5';
 import { HomePage } from '../home/home';
 import { UserOptions } from '../../interfaces/user-options';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
+import { PassDataServiceProvider } from '../../providers/pass-data-service/pass-data-service';
+
 
 @Component({
   selector: 'page-login',
@@ -15,12 +17,12 @@ export class LoginPage {
   login: UserOptions = { email: '', password: '' };
   submitted = false;
   jsonResult: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-    public restapiServiceProvider: RestapiServiceProvider) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public restapiServiceProvider: RestapiServiceProvider,
+    private passDataServiceProvider: PassDataServiceProvider) {
 
   }
-
- 
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
@@ -36,12 +38,12 @@ export class LoginPage {
 
 
   loginUser() {
-    this.navCtrl.push(HomePage);
     this.restapiServiceProvider.loginUser(this.login).then((result) => {
       console.log(result);
       this.jsonResult = result;
       if (this.jsonResult.status === 200 && this.jsonResult.status_message.toLowerCase() != "no data") {
-        this.navCtrl.push(HomePage);
+        this.passDataServiceProvider.setProfile(this.jsonResult.data);
+        this.navCtrl.push(HomePage, { userData: this.jsonResult.data });
       } else {
         console.log("Something getting wrong");
       }
