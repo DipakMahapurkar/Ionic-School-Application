@@ -4,119 +4,27 @@
       Home
     </ion-title>
   </ion-navbar>
-  <ion-toolbar>
-   
-      <ion-item>
-        <ion-avatar item-start>
-          <img src="assets/img/ic_user.svg">
-        </ion-avatar>
-        <h2>{{userData?.student_name}}</h2>
-        <h3>{{userData?.student_parent_name}}</h3>
-        <p>{{userData?.student_class}}</p>
-      </ion-item>
+  <ion-toolbar class="cardPadding0">
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="assets/img/ic_user.svg">
+      </ion-avatar>
+      <h2>{{userData?.student_name}}</h2>
+      <h3>{{userData?.student_parent_name}}</h3>
+      <p>{{userData?.student_class}}</p>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
   <ion-grid>
-    <ion-row>
-      <ion-col class="cardPadding0">
-        <div>
-          <ion-card class="cardBorderRadius">
+    <ion-row responsive-sm>
+      <ion-col col-6 class="cardPadding0" *ngFor="let item of dashboardMenus">
+          <ion-card class="cardBorderRadius" (click)="dashboardMenuClick(item.id);">
             <ion-card-content class="cardPadding0">
-              <img src="assets/img/attendance_image.png" />
+              <img [src]="item.image"/>
             </ion-card-content>
           </ion-card>
-        </div>
-      </ion-col>
-      <ion-col class="cardPadding0">
-        <div>
-          <ion-card class="cardBorderRadius">
-            <ion-card-content class="cardPadding0">
-              <img src="assets/img/report.png" />
-            </ion-card-content>
-          </ion-card>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col class="cardPadding0">
-        <div>
-          <ion-card class="cardBorderRadius">
-            <ion-card-content class="cardPadding0">
-              <img src="assets/img/homework_image.png" />
-            </ion-card-content>
-          </ion-card>
-        </div>
-      </ion-col>
-      <ion-col class="cardPadding0">
-        <div>
-          <ion-card class="cardBorderRadius">
-            <ion-card-content class="cardPadding0">
-              <img src="assets/img/timeline.png" />
-            </ion-card-content>
-          </ion-card>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col class="cardPadding0">
-        <div>
-          <ion-card class="cardBorderRadius">
-            <ion-card-content class="cardPadding0">
-              <img src="assets/img/marksheet.png" />
-            </ion-card-content>
-          </ion-card>
-        </div>
-      </ion-col>
-      <ion-col class="cardPadding0">
-        <div>
-          <ion-card class="cardBorderRadius">
-            <ion-card-content class="cardPadding0">
-              <img src="assets/img/reminder.png" />
-            </ion-card-content>
-          </ion-card>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col class="cardPadding0">
-        <div>
-          <ion-card class="cardBorderRadius">
-            <ion-card-content class="cardPadding0">
-              <img src="assets/img/attendance_image.png" />
-            </ion-card-content>
-          </ion-card>
-        </div>
-      </ion-col>
-      <ion-col class="cardPadding0">
-        <div>
-          <ion-card class="cardBorderRadius">
-            <ion-card-content class="cardPadding0">
-              <img src="assets/img/attendance_image.png" />
-            </ion-card-content>
-          </ion-card>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col class="cardPadding0">
-        <div>
-          <ion-card class="cardBorderRadius">
-            <ion-card-content class="cardPadding0">
-              <img src="assets/img/attendance_image.png" />
-            </ion-card-content>
-          </ion-card>
-        </div>
-      </ion-col>
-      <ion-col class="cardPadding0">
-        <div>
-          <ion-card class="cardBorderRadius">
-            <ion-card-content class="cardPadding0">
-              <img src="assets/img/attendance_image.png" />
-            </ion-card-content>
-          </ion-card>
-        </div>
       </ion-col>
     </ion-row>
   </ion-grid>
