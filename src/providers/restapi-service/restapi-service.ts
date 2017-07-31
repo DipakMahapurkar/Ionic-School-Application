@@ -26,4 +26,20 @@ export class RestapiServiceProvider {
     });
   }
   // End Post api syntax for user login
+
+
+  getTimeline() {
+    return new Promise((resolve, reject) => {
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      this.http.get(this.apiBaseUrl + 'timelineapi.php', { headers: headers })
+        .map((res) => res.json())
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
 }

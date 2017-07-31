@@ -1,3 +1,21 @@
-page-timeline {
+.ios, .md {
+    page-timeline {
+        .card-md p{
+            margin: 2% !important;
+            font-size: 1.5rem;
+            color: #424242;
+        }
 
+        .card-content-md{
+            padding: 0;
+        }
+
+        .card-header-md h2{
+            font-size: 1.8rem;
+        }
+
+        .card-header-md h4{
+            color: #999;
+        }
+    }
 }

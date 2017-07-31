@@ -1,24 +1,28 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the TimelinePage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 
 @Component({
   selector: 'page-timeline',
   templateUrl: 'timeline.html',
 })
 export class TimelinePage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  private jsonResult: any;
+  private timelines: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public restapiServiceProvider: RestapiServiceProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TimelinePage');
+    this.restapiServiceProvider.getTimeline().then((result) => {
+      this.jsonResult = result;
+      if (this.jsonResult.status === 200 && this.jsonResult.status_message.toLowerCase() != "no data") {
+        this.timelines = this.jsonResult.data;
+      } else {
+        console.log("Something getting wrong");
+      }
+    });
   }
-
 }

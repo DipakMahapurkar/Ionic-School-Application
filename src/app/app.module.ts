@@ -43,7 +43,22 @@ import { PassDataServiceProvider } from '../providers/pass-data-service/pass-dat
   imports: [
     HttpModule,
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      links: [
+        { component: LoginPage, name: 'LoginPage', segment: 'login-page' },
+        { component: HomePage, name: 'HomePage', segment: 'home-page' },
+        { component: AttendancePage, name: 'AttendancePage', segment: 'attendance-page' },
+        { component: MonthlyReportPage, name: 'MonthlyReportPage', segment: 'monthly-report-page' },   
+        { component: ApplicationPage, name: 'ApplicationPage', segment: 'application-page' },
+        { component: FeeReminderPage, name: 'FeeReminderPage', segment: 'fee-reminder-page' },
+        { component: HomeworkPage, name: 'HomeworkPage', segment: 'homework-page' },
+        { component: MarksheetPage, name: 'MarksheetPage', segment: 'marksheet-page' },
+        { component: NoticePage, name: 'NoticePage', segment: 'notice-page' },
+        { component: TimelinePage, name: 'TimelinePage', segment: 'timeline-page' },
+        { component: TimetablePage, name: 'TimetablePage', segment: 'timetable-page' },
+        { component: YearlySchedulePage, name: 'YearlySchedulePage', segment: 'yearly-schedule-page' },
+      ]
+    }),
     IonicStorageModule.forRoot({
       name: 'SchoolApp',
       driverOrder: ['indexeddb', 'sqlite', 'websql']

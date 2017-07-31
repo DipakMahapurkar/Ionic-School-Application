@@ -39,9 +39,9 @@ export class HomePage {
 
   ionViewWillEnter() {
     console.log("in ionViewCanEnter");
-    // this.passDataServiceProvider.getProfile().then((data) => {
-    //   this.userData = data[0];
-    // });
+    this.passDataServiceProvider.getProfile().then((data) => {
+      this.userData = data[0];
+    });
   };
 
   dashboardMenuClick(pageId) {
@@ -57,7 +57,7 @@ export class HomePage {
     } else if (pageId === 5) {
       this.navCtrl.push(FeeReminderPage);
     } else if (pageId === 6) {
-      this.navCtrl.push(TimetablePage);
+      this.navCtrl.push(TimetablePage);    
     } else if (pageId === 7) {
       this.navCtrl.push(NoticePage);
     } else if (pageId === 8) {
