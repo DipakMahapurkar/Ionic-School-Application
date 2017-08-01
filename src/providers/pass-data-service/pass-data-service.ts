@@ -20,4 +20,17 @@ export class PassDataServiceProvider {
       });
     });
   }
+
+  setData(data: any, key: any): void {
+    this.storage.set(key, data);
+  }
+  getData(key: any): any {
+    return new Promise((resolve, reject) => {
+      this.storage.get(key).then((data) => {
+        resolve(data);
+      }).catch(() => {
+        resolve("Error");
+      });
+    });
+  }
 }

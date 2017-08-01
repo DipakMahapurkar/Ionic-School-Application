@@ -47,7 +47,6 @@ export class LoginPage {
       } else {
         console.log("Something getting wrong");
       }
-
     }, (err) => {
       console.log(err);
     });

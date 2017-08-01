@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
 
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
@@ -38,7 +39,7 @@ import { PassDataServiceProvider } from '../providers/pass-data-service/pass-dat
     NoticePage,
     TimelinePage,
     TimetablePage,
-    YearlySchedulePage
+    YearlySchedulePage,
   ],
   imports: [
     HttpModule,
@@ -48,7 +49,7 @@ import { PassDataServiceProvider } from '../providers/pass-data-service/pass-dat
         { component: LoginPage, name: 'LoginPage', segment: 'login-page' },
         { component: HomePage, name: 'HomePage', segment: 'home-page' },
         { component: AttendancePage, name: 'AttendancePage', segment: 'attendance-page' },
-        { component: MonthlyReportPage, name: 'MonthlyReportPage', segment: 'monthly-report-page' },   
+        { component: MonthlyReportPage, name: 'MonthlyReportPage', segment: 'monthly-report-page' },
         { component: ApplicationPage, name: 'ApplicationPage', segment: 'application-page' },
         { component: FeeReminderPage, name: 'FeeReminderPage', segment: 'fee-reminder-page' },
         { component: HomeworkPage, name: 'HomeworkPage', segment: 'homework-page' },
@@ -62,7 +63,8 @@ import { PassDataServiceProvider } from '../providers/pass-data-service/pass-dat
     IonicStorageModule.forRoot({
       name: 'SchoolApp',
       driverOrder: ['indexeddb', 'sqlite', 'websql']
-    })
+    }),
+  
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { PassDataServiceProvider } from '../../providers/pass-data-service/pass-data-service';
 
 import { AttendancePage } from '../attendance/attendance';
@@ -20,9 +21,16 @@ import { YearlySchedulePage } from '../yearly-schedule/yearly-schedule';
 export class HomePage {
   private userData: any;
   private dashboardMenus: any;
+
+  private classDivSubData: any;
+  private classJsonObject: any;
+  private divisionJsonObject: any;
+  private subjectJsonObject: any;
+
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    public passDataServiceProvider: PassDataServiceProvider) {
+    public passDataServiceProvider: PassDataServiceProvider,
+    private restapiServiceProvider: RestapiServiceProvider) {
     this.dashboardMenus = [
       { "id": 1, menuName: "Ateendance", image: "assets/img/attendance_image.png" },
       { "id": 2, menuName: "Monthly Report", image: "assets/img/report.png" },
@@ -35,6 +43,7 @@ export class HomePage {
       { "id": 9, menuName: "Notice", image: "assets/img/application.png" },
       { "id": 10, menuName: "Application", image: "assets/img/about_image.png" },
     ];
+    this.getClassDivisionSubject();
   }
 
   ionViewWillEnter() {
@@ -43,6 +52,33 @@ export class HomePage {
       this.userData = data[0];
     });
   };
+
+  getClassDivisionSubject() {
+    this.restapiServiceProvider.getAPIClassDivSub("dropdownapi.php/getClassDropdown").then((data) => {
+      this.classJsonObject = data;
+      if (this.classJsonObject.status === 200 && this.classJsonObject.status_message.toLowerCase() != "no data") {
+        this.passDataServiceProvider.setData(this.classJsonObject.data, "CLASS_LIST");
+        this.restapiServiceProvider.getAPIClassDivSub("dropdownapi.php/getDivisionDropdown").then((data) => {
+          this.divisionJsonObject = data;
+          if (this.divisionJsonObject.status === 200 && this.divisionJsonObject.status_message.toLowerCase() != "no data") {
+            this.passDataServiceProvider.setData(this.divisionJsonObject.data, "DIVISION_LIST");
+            this.restapiServiceProvider.getAPIClassDivSub("dropdownapi.php/getSubjectDropdown").then((data) => {
+              this.subjectJsonObject = data;
+              if (this.subjectJsonObject.status === 200 && this.subjectJsonObject.status_message.toLowerCase() != "no data") {
+                this.passDataServiceProvider.setData(this.subjectJsonObject.data, "SUBJECT_LIST");
+              } else {
+                console.log("Response for subject = " + this.subjectJsonObject.status_message);
+              }
+            });
+          } else {
+            console.log("Response for division = " + this.divisionJsonObject.status_message);
+          }
+        });
+      } else {
+        console.log("Response for class = " + this.classJsonObject.status_message);
+      }
+    });
+  }
 
   dashboardMenuClick(pageId) {
     console.log(pageId);
@@ -57,7 +93,7 @@ export class HomePage {
     } else if (pageId === 5) {
       this.navCtrl.push(FeeReminderPage);
     } else if (pageId === 6) {
-      this.navCtrl.push(TimetablePage);    
+      this.navCtrl.push(TimetablePage);
     } else if (pageId === 7) {
       this.navCtrl.push(NoticePage);
     } else if (pageId === 8) {
