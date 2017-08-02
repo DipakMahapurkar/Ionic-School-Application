@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
-
+import { PdfViewerComponent } from 'ng2-pdf-viewer';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -28,6 +28,7 @@ import { LoadingProvider } from '../providers/loading/loading';
 
 @NgModule({
   declarations: [
+    PdfViewerComponent,
     MyApp,
     HomePage,
     LoginPage,
@@ -65,7 +66,6 @@ import { LoadingProvider } from '../providers/loading/loading';
       name: 'SchoolApp',
       driverOrder: ['indexeddb', 'sqlite', 'websql']
     }),
-  
   ],
   bootstrap: [IonicApp],
   entryComponents: [

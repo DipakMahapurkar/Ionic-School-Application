@@ -45,14 +45,15 @@ export class HomePage {
       { "id": 9, menuName: "Notice", image: "assets/img/application.png" },
       { "id": 10, menuName: "Application", image: "assets/img/about_image.png" },
     ];
-    this.getClassDivisionSubject();
   }
 
   ionViewWillEnter() {
-    this.loading.showLoader();
+    // this.loading.showLoader();
     console.log("in ionViewCanEnter");
     this.passDataServiceProvider.getProfile().then((data) => {
       this.userData = data[0];
+      this.getClassDivisionSubject();
+
     });
   };
 
@@ -70,19 +71,28 @@ export class HomePage {
               if (this.subjectJsonObject.status === 200 && this.subjectJsonObject.status_message.toLowerCase() != "no data") {
                 this.passDataServiceProvider.setData(this.subjectJsonObject.data, "SUBJECT_LIST");
                 setTimeout(() => {
-                  this.loading.hideLoader();
+                  // this.loading.hideLoader();
                 }, 1000);
 
               } else {
                 console.log("Response for subject = " + this.subjectJsonObject.status_message);
+                setTimeout(() => {
+                  this.loading.hideLoader();
+                }, 1000);
               }
             });
           } else {
             console.log("Response for division = " + this.divisionJsonObject.status_message);
+            setTimeout(() => {
+              this.loading.hideLoader();
+            }, 1000);
           }
         });
       } else {
         console.log("Response for class = " + this.classJsonObject.status_message);
+        setTimeout(() => {
+          this.loading.hideLoader();
+        }, 1000);
       }
     });
   }
@@ -90,7 +100,7 @@ export class HomePage {
   dashboardMenuClick(pageId) {
     console.log(pageId);
     if (pageId === 1) {
-      this.navCtrl.push(AttendancePage);
+      this.navCtrl.push(YearlySchedulePage);
     } else if (pageId === 2) {
       this.navCtrl.push(MonthlyReportPage);
     } else if (pageId === 3) {
