@@ -7,6 +7,7 @@ import { HomePage } from '../home/home';
 import { UserOptions } from '../../interfaces/user-options';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { PassDataServiceProvider } from '../../providers/pass-data-service/pass-data-service';
+import { LoadingProvider } from '../../providers/loading/loading';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class LoginPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public restapiServiceProvider: RestapiServiceProvider,
-    private passDataServiceProvider: PassDataServiceProvider) {
+    private passDataServiceProvider: PassDataServiceProvider,
+    private loading: LoadingProvider) {
 
   }
 
@@ -36,19 +38,25 @@ export class LoginPage {
     }
   }
 
-
   loginUser() {
+    this.loading.showLoader();
     this.restapiServiceProvider.loginUser(this.login).then((result) => {
       console.log(result);
       this.jsonResult = result;
       if (this.jsonResult.status === 200 && this.jsonResult.status_message.toLowerCase() != "no data") {
         this.passDataServiceProvider.setProfile(this.jsonResult.data);
         this.navCtrl.push(HomePage, { userData: this.jsonResult.data });
+        setTimeout(() => {
+          this.loading.hideLoader();
+        }, 1000);
       } else {
         console.log("Something getting wrong");
       }
     }, (err) => {
       console.log(err);
+      setTimeout(() => {
+        this.loading.hideLoader();
+      }, 1000);
     });
   }
 }

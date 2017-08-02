@@ -71,7 +71,7 @@ export class HomePage {
                 this.passDataServiceProvider.setData(this.subjectJsonObject.data, "SUBJECT_LIST");
                 setTimeout(() => {
                   this.loading.hideLoader();
-                }, 5000);
+                }, 1000);
 
               } else {
                 console.log("Response for subject = " + this.subjectJsonObject.status_message);
