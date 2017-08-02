@@ -23,6 +23,7 @@ import { YearlySchedulePage } from '../pages/yearly-schedule/yearly-schedule';
 
 import { RestapiServiceProvider } from '../providers/restapi-service/restapi-service';
 import { PassDataServiceProvider } from '../providers/pass-data-service/pass-data-service';
+import { LoadingProvider } from '../providers/loading/loading';
 
 
 @NgModule({
@@ -87,7 +88,8 @@ import { PassDataServiceProvider } from '../providers/pass-data-service/pass-dat
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     RestapiServiceProvider,
-    PassDataServiceProvider
+    PassDataServiceProvider,
+    LoadingProvider
   ]
 })
 export class AppModule { }

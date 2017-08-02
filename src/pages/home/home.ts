@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { PassDataServiceProvider } from '../../providers/pass-data-service/pass-data-service';
+import { LoadingProvider } from '../../providers/loading/loading';
 
 import { AttendancePage } from '../attendance/attendance';
 import { MonthlyReportPage } from '../monthly-report/monthly-report';
@@ -30,7 +31,8 @@ export class HomePage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public passDataServiceProvider: PassDataServiceProvider,
-    private restapiServiceProvider: RestapiServiceProvider) {
+    private restapiServiceProvider: RestapiServiceProvider,
+    private loading: LoadingProvider) {
     this.dashboardMenus = [
       { "id": 1, menuName: "Ateendance", image: "assets/img/attendance_image.png" },
       { "id": 2, menuName: "Monthly Report", image: "assets/img/report.png" },
@@ -47,6 +49,7 @@ export class HomePage {
   }
 
   ionViewWillEnter() {
+    this.loading.showLoader();
     console.log("in ionViewCanEnter");
     this.passDataServiceProvider.getProfile().then((data) => {
       this.userData = data[0];
@@ -66,6 +69,10 @@ export class HomePage {
               this.subjectJsonObject = data;
               if (this.subjectJsonObject.status === 200 && this.subjectJsonObject.status_message.toLowerCase() != "no data") {
                 this.passDataServiceProvider.setData(this.subjectJsonObject.data, "SUBJECT_LIST");
+                setTimeout(() => {
+                  this.loading.hideLoader();
+                }, 5000);
+
               } else {
                 console.log("Response for subject = " + this.subjectJsonObject.status_message);
               }

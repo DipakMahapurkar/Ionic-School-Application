@@ -15,7 +15,8 @@ export class ApplicationPage {
   jsonResult: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public passDataServiceProvider: PassDataServiceProvider, private restapiServiceProvider: RestapiServiceProvider) {
+    public passDataServiceProvider: PassDataServiceProvider, 
+    private restapiServiceProvider: RestapiServiceProvider) {
   };
 
   ionViewDidLoad() {
