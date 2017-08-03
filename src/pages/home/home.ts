@@ -52,42 +52,24 @@ export class HomePage {
     console.log("in ionViewCanEnter");
     this.passDataServiceProvider.getProfile().then((data) => {
       this.userData = data[0];
-      this.getClassDivisionSubject();
-
     });
   };
 
-  getClassDivisionSubject() {
-    this.restapiServiceProvider.getAPIClassDivSub("dropdownapi.php/getClassDropdown").then((data) => {
+  ionViewDidLoad() {
+    this.getClassList();
+    this.getDivisionList();
+    this.getSubjectList();
+  };
+
+  getClassList() {
+    // this.loading.showLoader();
+    this.restapiServiceProvider.getAPICall("dropdownapi.php/getClassDropdown").then((data) => {
       this.classJsonObject = data;
       if (this.classJsonObject.status === 200 && this.classJsonObject.status_message.toLowerCase() != "no data") {
         this.passDataServiceProvider.setData(this.classJsonObject.data, "CLASS_LIST");
-        this.restapiServiceProvider.getAPIClassDivSub("dropdownapi.php/getDivisionDropdown").then((data) => {
-          this.divisionJsonObject = data;
-          if (this.divisionJsonObject.status === 200 && this.divisionJsonObject.status_message.toLowerCase() != "no data") {
-            this.passDataServiceProvider.setData(this.divisionJsonObject.data, "DIVISION_LIST");
-            this.restapiServiceProvider.getAPIClassDivSub("dropdownapi.php/getSubjectDropdown").then((data) => {
-              this.subjectJsonObject = data;
-              if (this.subjectJsonObject.status === 200 && this.subjectJsonObject.status_message.toLowerCase() != "no data") {
-                this.passDataServiceProvider.setData(this.subjectJsonObject.data, "SUBJECT_LIST");
-                setTimeout(() => {
-                  // this.loading.hideLoader();
-                }, 1000);
-
-              } else {
-                console.log("Response for subject = " + this.subjectJsonObject.status_message);
-                setTimeout(() => {
-                  this.loading.hideLoader();
-                }, 1000);
-              }
-            });
-          } else {
-            console.log("Response for division = " + this.divisionJsonObject.status_message);
-            setTimeout(() => {
-              this.loading.hideLoader();
-            }, 1000);
-          }
-        });
+        // setTimeout(() => {
+        //   this.loading.hideLoader();
+        // }, 1000);
       } else {
         console.log("Response for class = " + this.classJsonObject.status_message);
         setTimeout(() => {
@@ -95,7 +77,44 @@ export class HomePage {
         }, 1000);
       }
     });
-  }
+  };
+
+  getDivisionList() {
+    // this.loading.showLoader();
+    this.restapiServiceProvider.getAPICall("dropdownapi.php/getDivisionDropdown").then((data) => {
+      this.divisionJsonObject = data;
+      if (this.divisionJsonObject.status === 200 && this.divisionJsonObject.status_message.toLowerCase() != "no data") {
+        this.passDataServiceProvider.setData(this.divisionJsonObject.data, "DIVISION_LIST");
+        // setTimeout(() => {
+        //   this.loading.hideLoader();
+        // }, 1000);
+      } else {
+        console.log("Response for division = " + this.divisionJsonObject.status_message);
+        setTimeout(() => {
+          this.loading.hideLoader();
+        }, 1000);
+      }
+    });
+  };
+
+  getSubjectList() {
+    // this.loading.showLoader();
+    this.restapiServiceProvider.getAPICall("dropdownapi.php/getSubjectDropdown").then((data) => {
+      this.subjectJsonObject = data;
+      if (this.subjectJsonObject.status === 200 && this.subjectJsonObject.status_message.toLowerCase() != "no data") {
+        this.passDataServiceProvider.setData(this.subjectJsonObject.data, "SUBJECT_LIST");
+        // setTimeout(() => {
+        //   this.loading.hideLoader();
+        // }, 1000);
+      } else {
+        console.log("Response for subject = " + this.subjectJsonObject.status_message);
+        setTimeout(() => {
+          this.loading.hideLoader();
+        }, 1000);
+      }
+    });
+  };
+
 
   dashboardMenuClick(pageId) {
     console.log(pageId);

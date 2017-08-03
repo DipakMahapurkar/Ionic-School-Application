@@ -16,7 +16,7 @@ export class TimelinePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TimelinePage');
-    this.restapiServiceProvider.getTimeline().then((result) => {
+    this.restapiServiceProvider.getAPICall('timelineapi.php').then((result) => {
       this.jsonResult = result;
       if (this.jsonResult.status === 200 && this.jsonResult.status_message.toLowerCase() != "no data") {
         this.timelines = this.jsonResult.data;

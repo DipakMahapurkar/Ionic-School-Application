@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class RestapiServiceProvider {
   apiBaseUrl = 'https://reliancelaturpattern.com/schoolapp/api/';
+  // apiBaseUrl = 'http://pathatech.com/schoolapp/api/';
 
   constructor(public http: Http) {
     console.log('Hello RestapiServiceProvider Provider');
@@ -16,11 +17,11 @@ export class RestapiServiceProvider {
     @parameters: {email: '', password: ''} 
     @password will be entrypted
   */
-  loginUser(credentials) {
+  postAPICall(endPoint, credentials) {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.post(this.apiBaseUrl + 'studentapi.php/login', JSON.stringify(credentials), { headers: headers })
+      this.http.post(this.apiBaseUrl + endPoint, JSON.stringify(credentials), { headers: headers })
         .map((res) => res.json())
         .subscribe(res => {
           resolve(res);
@@ -32,31 +33,11 @@ export class RestapiServiceProvider {
   /*End Post api syntax for user login*/
 
 
-  /* Rest API for getting timeline list 
-    @functionName: getTimeline(), 
+  /* Rest API for getting getAPICall list 
+    @functionName: getAPICall(), 
     @parameters: none
   */
-  getTimeline() {
-    return new Promise((resolve, reject) => {
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      this.http.get(this.apiBaseUrl + 'timelineapi.php', { headers: headers })
-        .map((res) => res.json())
-        .subscribe(res => {
-          resolve(res);
-        }, (err) => {
-          reject(err);
-        });
-    });
-  }
-  /* End Rest API for getting timeline list */
-
-
-  /* Rest API for getting getAPIClassDivSub list 
-    @functionName: getAPIClassDivSub(), 
-    @parameters: none
-  */
-  getAPIClassDivSub(endPoint) {
+  getAPICall(endPoint) {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
@@ -68,27 +49,6 @@ export class RestapiServiceProvider {
           reject(err);
         });
     });
-  }
-  /* End Rest API for getting getAPIClassDivSub list */
-
-  /*Post api syntax for user login
-      @functionName: postStudentApplication(), 
-      @parameters: { studentid: '', classid: '', divisionid: '', description: '' }
-      @password will be entrypted
-    */
-  postStudentApplication(applicationData) {
-    return new Promise((resolve, reject) => {
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      this.http.post(this.apiBaseUrl + 'applicationapi.php', JSON.stringify(applicationData), { headers: headers })
-        .map((res) => res.json())
-        .subscribe(res => {
-          resolve(res);
-        }, (err) => {
-          reject(err);
-        });
-    });
-  }
-  /*End Post api syntax for user postStudentApplication*/
-
+  };
+  /* End Rest API for getting getAPICall list */
 }

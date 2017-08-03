@@ -40,7 +40,7 @@ export class LoginPage {
 
   loginUser() {
     this.loading.showLoader();
-    this.restapiServiceProvider.loginUser(this.login).then((result) => {
+    this.restapiServiceProvider.postAPICall('studentapi.php/login', this.login).then((result) => {
       console.log(result);
       this.jsonResult = result;
       if (this.jsonResult.status === 200 && this.jsonResult.status_message.toLowerCase() != "no data") {

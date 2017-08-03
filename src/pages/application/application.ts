@@ -10,13 +10,17 @@ import { PassDataServiceProvider } from '../../providers/pass-data-service/pass-
   templateUrl: 'application.html',
 })
 export class ApplicationPage {
+  isStudent: boolean;
   application: ApplicationPostModel = { studentid: '', classid: '', divisionid: '', description: '' };
 
   jsonResult: any;
+  applicationListObject: any;
+  teacherId: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public passDataServiceProvider: PassDataServiceProvider, 
+    public passDataServiceProvider: PassDataServiceProvider,
     private restapiServiceProvider: RestapiServiceProvider) {
+    this.isStudent = false;
   };
 
   ionViewDidLoad() {
@@ -28,8 +32,23 @@ export class ApplicationPage {
     });
   };
 
+  ionViewWillLoad() {
+    this.getApplicationList();
+  };
+
+  getApplicationList() {
+    this.restapiServiceProvider.getAPICall("applicationapi.php/" + "1").then((result) => {
+      this.jsonResult = result;
+      if (this.jsonResult.status === 200 && this.jsonResult.status_message.toLowerCase() != "no data") {
+        this.applicationListObject = this.jsonResult.data;
+      } else {
+        console.log("Something getting wrong");
+      }
+    });
+  };
+
   postStudentApplication() {
-    this.restapiServiceProvider.postStudentApplication(this.application).then((result) => {
+    this.restapiServiceProvider.postAPICall('applicationapi.php', this.application).then((result) => {
       console.log("Application Response = " + JSON.stringify(result));
       this.jsonResult = result;
       if (this.jsonResult.status === 200 && this.jsonResult.status_message.toLowerCase() != "no data") {

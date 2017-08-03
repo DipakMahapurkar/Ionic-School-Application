@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Application</ion-title>
-    <ion-buttons end>
+    <ion-buttons end *ngIf="isStudent">
       <button ion-button icon-only (click)="postStudentApplication()" color="primary">
         <ion-icon name="checkmark"></ion-icon>
       </button>
@@ -9,6 +9,22 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-textarea placeholder="Enter application content here..." rows="5" [(ngModel)]="application.description"></ion-textarea>
+<ion-content>
+  <ion-card *ngFor="let item of applicationListObject">
+    <ion-card-header>
+      <ion-row responsive-sm>
+      <ion-col col-9 align-self-start class="colPadding0">
+        <h2>{{item.student_name}}</h2>
+        <p>Roll Number: {{item.student_roll_number}}</p>
+      </ion-col>
+      <ion-col col-3>
+        <p>{{item.created_at | date: 'dd-MMM-yyyy'}}</p>
+      </ion-col>
+      </ion-row>
+    </ion-card-header>
+    <ion-card-content>
+      {{item.application_description}}
+    </ion-card-content>
+  </ion-card>
+  <ion-textarea *ngIf="isStudent" placeholder="Enter application content here..." rows="5" [(ngModel)]="application.description"></ion-textarea>
 </ion-content>

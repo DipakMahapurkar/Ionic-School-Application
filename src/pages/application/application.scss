@@ -1,3 +1,15 @@
-page-application {
+.ios, .md {
+    page-application {
+        .card-md p{
+            color: gray;
+        }
 
+        .colPadding0{
+            padding: 0px;
+        }
+
+        .card-header-md{
+            padding: 10px 16px 10px 16px;
+        }
+    }
 }
