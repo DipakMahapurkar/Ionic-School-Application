@@ -19,9 +19,9 @@
 <ion-content padding>
   <ion-grid>
     <ion-row responsive-sm>
-      <ion-col col-6 class="cardPadding0" *ngFor="let item of dashboardMenus">
+      <ion-col col-6 no-padding *ngFor="let item of dashboardMenus">
         <ion-card class="cardBorderRadius" (click)="dashboardMenuClick(item.id);">
-          <ion-card-content class="cardPadding0">
+          <ion-card-content no-padding>
             <div class="mid">
               <img [src]="item.image" />
               <h2>{{item.menuName}}</h2>
