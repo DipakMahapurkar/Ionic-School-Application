@@ -20,11 +20,14 @@
   <ion-grid>
     <ion-row responsive-sm>
       <ion-col col-6 class="cardPadding0" *ngFor="let item of dashboardMenus">
-          <ion-card class="cardBorderRadius" (click)="dashboardMenuClick(item.id);">
-            <ion-card-content class="cardPadding0">
-              <img [src]="item.image"/>
-            </ion-card-content>
-          </ion-card>
+        <ion-card class="cardBorderRadius" (click)="dashboardMenuClick(item.id);">
+          <ion-card-content class="cardPadding0">
+            <div class="mid">
+              <img [src]="item.image" />
+              <h2>{{item.menuName}}</h2>
+            </div>
+          </ion-card-content>
+        </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
