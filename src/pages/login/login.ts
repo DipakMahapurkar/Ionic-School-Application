@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import md5 from 'crypto-md5';
 
 import { HomePage } from '../home/home';
+import { ChangePasswordPage } from '../change-password/change-password';
 import { UserOptions } from '../../interfaces/user-options';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { PassDataServiceProvider } from '../../providers/pass-data-service/pass-data-service';
@@ -36,7 +37,11 @@ export class LoginPage {
       this.login.password = md5(this.login.password, 'hex');
       this.loginUser();
     }
-  }
+  };
+
+  changePassword() {
+    this.navCtrl.push(ChangePasswordPage);
+  };
 
   loginUser() {
     this.loading.showLoader();

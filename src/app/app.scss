@@ -23,3 +23,12 @@ ion-title {
     height: 100%;
     text-align: center;
 }
+
+ion-navbar {
+    box-shadow: 0px 5px 16px 1px rgba(117, 117, 117, 0.8);
+}
+
+ion-content{
+    background-color: rgba(224, 224, 224, 0.7) !important; 
+}
+

@@ -1,18 +1,17 @@
 <ion-content>
   <ion-card>
     <ion-item>
-        <ion-avatar>
-          <img src="assets/img/ic_user.svg">
-        </ion-avatar>
-      </ion-item>
+      <ion-avatar>
+        <img src="assets/img/ic_user.svg">
+      </ion-avatar>
+    </ion-item>
 
     <ion-card-content>
       <form #loginForm="ngForm" novalidate>
         <ion-list no-lines>
           <ion-item>
             <ion-label floating color="primary">Email</ion-label>
-            <ion-input [(ngModel)]="login.email" name="email" type="text" #email="ngModel" spellcheck="false" autocapitalize="off"
-              required>
+            <ion-input [(ngModel)]="login.email" name="email" type="text" #email="ngModel" spellcheck="false" autocapitalize="off" required>
             </ion-input>
           </ion-item>
           <p ion-text [hidden]="email.valid || submitted == false" color="danger" padding-left>
@@ -36,7 +35,12 @@
             <button ion-button class='buttonTextSmallCase' (click)="onLogin(loginForm)" color="dark" block>Parent Login</button>
           </ion-col>
         </ion-row>
+
+        <ion-row responsive-sm>
+          <button ion-button class='buttonTextSmallCase' (click)="changePassword()" color="dark" block>Change Password</button>
+        </ion-row>
       </form>
+
     </ion-card-content>
   </ion-card>
 </ion-content>

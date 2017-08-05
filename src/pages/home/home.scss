@@ -13,6 +13,23 @@
             border-radius: 10%;
         }
 
+        .item-md.item-block .item-inner{
+            border: none;
+        }
+
+        .item-md h2{
+            padding: 0 0 5px 0;
+            font-size: 1.8rem;
+        }
+        .item-md h3{
+            padding: 0 0 3px 0;
+            font-size: 1.5rem;
+        }
+
+        ion-navbar {
+            box-shadow: 0px 5px 16px 1px rgba(117, 117, 117, 0.8);
+        }
+
         .mid h2 {
             font-family: 'Roboto', sans-serif;
             font-weight: 700;

@@ -9,6 +9,7 @@ import { PdfViewerComponent } from 'ng2-pdf-viewer';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { ChangePasswordPage } from '../pages/change-password/change-password';
 import { LoginPage } from '../pages/login/login';
 import { AttendancePage } from '../pages/attendance/attendance';
 import { MonthlyReportPage } from '../pages/monthly-report/monthly-report';
@@ -24,6 +25,7 @@ import { YearlySchedulePage } from '../pages/yearly-schedule/yearly-schedule';
 import { RestapiServiceProvider } from '../providers/restapi-service/restapi-service';
 import { PassDataServiceProvider } from '../providers/pass-data-service/pass-data-service';
 import { LoadingProvider } from '../providers/loading/loading';
+import { CommonAlertProvider } from '../providers/common-alert/common-alert';
 
 
 @NgModule({
@@ -31,6 +33,7 @@ import { LoadingProvider } from '../providers/loading/loading';
     PdfViewerComponent,
     MyApp,
     HomePage,
+    ChangePasswordPage,
     LoginPage,
     AttendancePage,
     MonthlyReportPage,
@@ -71,6 +74,7 @@ import { LoadingProvider } from '../providers/loading/loading';
   entryComponents: [
     MyApp,
     HomePage,
+    ChangePasswordPage,
     LoginPage,
     AttendancePage,
     MonthlyReportPage,
@@ -89,7 +93,8 @@ import { LoadingProvider } from '../providers/loading/loading';
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     RestapiServiceProvider,
     PassDataServiceProvider,
-    LoadingProvider
+    LoadingProvider,
+    CommonAlertProvider
   ]
 })
 export class AppModule { }
