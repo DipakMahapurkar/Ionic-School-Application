@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { AddTimelinePage } from '../add-timeline/add-timeline';
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 
 @Component({
@@ -24,5 +25,9 @@ export class TimelinePage {
         console.log("Something getting wrong");
       }
     });
+  }
+
+  addTimeLine(){
+    this.navCtrl.push(AddTimelinePage);
   }
 }

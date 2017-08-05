@@ -22,6 +22,9 @@ import { TimelinePage } from '../pages/timeline/timeline';
 import { TimetablePage } from '../pages/timetable/timetable';
 import { YearlySchedulePage } from '../pages/yearly-schedule/yearly-schedule';
 
+import { AddTimelinePage } from '../pages/add-timeline/add-timeline';
+
+
 import { RestapiServiceProvider } from '../providers/restapi-service/restapi-service';
 import { PassDataServiceProvider } from '../providers/pass-data-service/pass-data-service';
 import { LoadingProvider } from '../providers/loading/loading';
@@ -45,6 +48,7 @@ import { CommonAlertProvider } from '../providers/common-alert/common-alert';
     TimelinePage,
     TimetablePage,
     YearlySchedulePage,
+    AddTimelinePage,
   ],
   imports: [
     HttpModule,
@@ -85,7 +89,8 @@ import { CommonAlertProvider } from '../providers/common-alert/common-alert';
     NoticePage,
     TimelinePage,
     TimetablePage,
-    YearlySchedulePage
+    YearlySchedulePage,
+    AddTimelinePage,
   ],
   providers: [
     StatusBar,
