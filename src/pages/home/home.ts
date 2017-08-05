@@ -7,7 +7,6 @@ import { LoadingProvider } from '../../providers/loading/loading';
 import { AttendancePage } from '../attendance/attendance';
 import { MonthlyReportPage } from '../monthly-report/monthly-report';
 import { ApplicationPage } from '../application/application';
-import { FeeReminderPage } from '../fee-reminder/fee-reminder';
 import { HomeworkPage } from '../homework/homework';
 import { MarksheetPage } from '../marksheet/marksheet';
 import { NoticePage } from '../notice/notice';
@@ -39,11 +38,10 @@ export class HomePage {
       { "id": 3, menuName: "Marksheet", image: "assets/img/marksheet.png" },
       { "id": 4, menuName: "Timeline", image: "assets/img/timeline.png" },
       { "id": 5, menuName: "Homework", image: "assets/img/homework_image.png" },
-      { "id": 6, menuName: "Fee Reminder", image: "assets/img/reminder.png" },
-      { "id": 7, menuName: "Yearly Schedule", image: "assets/img/schedule.png" },
-      { "id": 8, menuName: "Timetable", image: "assets/img/notice.png" },
-      { "id": 9, menuName: "Notice", image: "assets/img/application.png" },
-      { "id": 10, menuName: "Application", image: "assets/img/about_image.png" },
+      { "id": 6, menuName: "Yearly Schedule", image: "assets/img/schedule.png" },
+      { "id": 7, menuName: "Timetable", image: "assets/img/notice.png" },
+      { "id": 8, menuName: "Notice", image: "assets/img/application.png" },
+      { "id": 9, menuName: "Application", image: "assets/img/about_image.png" },
     ];
   }
 
@@ -119,20 +117,22 @@ export class HomePage {
   dashboardMenuClick(pageId) {
     console.log(pageId);
     if (pageId === 1) {
-      this.navCtrl.push(YearlySchedulePage);
+      this.navCtrl.push(AttendancePage);
     } else if (pageId === 2) {
       this.navCtrl.push(MonthlyReportPage);
     } else if (pageId === 3) {
-      this.navCtrl.push(HomeworkPage);
+      this.navCtrl.push(MarksheetPage);
     } else if (pageId === 4) {
       this.navCtrl.push(TimelinePage);
     } else if (pageId === 5) {
-      this.navCtrl.push(FeeReminderPage);
+      this.navCtrl.push(HomeworkPage);
     } else if (pageId === 6) {
-      this.navCtrl.push(TimetablePage);
+      this.navCtrl.push(YearlySchedulePage);
     } else if (pageId === 7) {
-      this.navCtrl.push(NoticePage);
+      this.navCtrl.push(TimetablePage);
     } else if (pageId === 8) {
+      this.navCtrl.push(NoticePage);
+    }else if (pageId === 9) {
       this.navCtrl.push(ApplicationPage);
     }
   }

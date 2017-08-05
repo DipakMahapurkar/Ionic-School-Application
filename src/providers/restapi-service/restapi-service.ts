@@ -7,6 +7,8 @@ import 'rxjs/add/operator/map';
 export class RestapiServiceProvider {
   apiBaseUrl = 'https://reliancelaturpattern.com/schoolapp/api/';
   // apiBaseUrl = 'http://pathatech.com/schoolapp/api/';
+  // Login Id = LTRRTC2017120001
+  // Password = 12345678
 
   constructor(public http: Http) {
     console.log('Hello RestapiServiceProvider Provider');

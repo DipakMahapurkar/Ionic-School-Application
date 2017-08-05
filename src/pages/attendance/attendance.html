@@ -5,5 +5,33 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-row responsive-md>
+    <ion-col col-3 no-padding>
+      <h5>Date</h5>
+    </ion-col>
+    <ion-col col-3 no-padding>
+      <h5>In Time</h5>
+    </ion-col>
+    <ion-col col-3 no-padding>
+      <h5>Out Time</h5>
+    </ion-col>
+    <ion-col col-3 no-padding>
+      <h5>Room No.</h5>
+    </ion-col>
+  </ion-row>
 
+  <ion-row responsive-md *ngFor="let item of attendanceListObject">
+    <ion-col col-3 no-padding>
+      <p>{{item.date}}</p>
+    </ion-col>
+    <ion-col col-3 no-padding>
+      <p>{{item.intime}}</p>
+    </ion-col>
+    <ion-col col-3 no-padding>
+      <p>{{item.outtime}}</p>
+    </ion-col>
+    <ion-col col-3 no-padding>
+      <p>{{item.classno}}</p>
+    </ion-col>
+  </ion-row>
 </ion-content>
