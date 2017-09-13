@@ -71,7 +71,7 @@ import { CommonAlertProvider } from '../providers/common-alert/common-alert';
     }),
     IonicStorageModule.forRoot({
       name: 'SchoolApp',
-      driverOrder: ['indexeddb', 'sqlite', 'websql']
+      driverOrder: ['websql', 'indexeddb', 'sqlite']
     }),
   ],
   bootstrap: [IonicApp],
