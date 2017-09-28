@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, NavParams, Navbar } from 'ionic-angular';
 
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { PassDataServiceProvider } from '../../providers/pass-data-service/pass-data-service';
@@ -10,7 +10,7 @@ import { PassDataServiceProvider } from '../../providers/pass-data-service/pass-
     templateUrl: 'homework.html',
 })
 export class HomeworkPage {
-
+    @ViewChild(Navbar) navBar: Navbar;
     jsonResult: any;
     homeworkListObject: any;
     studentId: any;
@@ -21,6 +21,11 @@ export class HomeworkPage {
     }
 
     ionViewDidLoad() {
+
+        this.navBar.backButtonClick = (e: UIEvent) => {   /// add this event
+            this.navCtrl.pop();
+        };
+
         console.log('ionViewDidLoad HomeworkPage');
         this.passDataServiceProvider.getProfile().then((data) => {
             this.studentId = data[0].student_roll_number;
