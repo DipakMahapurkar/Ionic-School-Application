@@ -3,40 +3,50 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { PassDataServiceProvider } from '../../providers/pass-data-service/pass-data-service';
+import { LoadingProvider } from '../../providers/loading/loading';
 
 
 @Component({
-  selector: 'page-homework',
-  templateUrl: 'homework.html',
+    selector: 'page-homework',
+    templateUrl: 'homework.html',
 })
 export class HomeworkPage {
-  
-  jsonResult: any;
-  homeworkListObject: any;
-  studentId: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-    public passDataServiceProvider: PassDataServiceProvider,
-    private restapiServiceProvider: RestapiServiceProvider) {
-  }
+    private jsonResult: any;
+    private homeworkListObject: any[];
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HomeworkPage');
-    this.passDataServiceProvider.getProfile().then((data) => {
-      this.studentId = data[0].student_roll_number;
-      this.getApplicationList();
-    });
-  }
+    constructor(public navCtrl: NavController, public navParams: NavParams,
+        public passDataServiceProvider: PassDataServiceProvider,
+        private loading: LoadingProvider,
+        private restapiServiceProvider: RestapiServiceProvider) {
+           
+    }
 
-  getApplicationList() {
-    this.restapiServiceProvider.getAPICall("homeworkapi.php/" + this.studentId).then((result) => {
-      this.jsonResult = result;
-      if (this.jsonResult.status === 200 && this.jsonResult.status_message.toLowerCase() != "no data") {
-        this.homeworkListObject = this.jsonResult.data;
-      } else {
-        console.log("Something getting wrong");
-      }
-    });
-  };
+    ionViewDidLoad() {
+        console.log('ionViewDidLoad HomeworkPage');
+        this.loading.showLoader();
+        this.passDataServiceProvider.getProfile().then((data) => {
+            this.getApplicationList(data[0].id);
+        });
+    }
 
+    getApplicationList(rollNumber: any) {
+        this.restapiServiceProvider.getAPICall("homeworkapi.php/" + rollNumber).then((result) => {
+            this.homeworkListObject = [];
+            this.jsonResult = result;
+            if (this.jsonResult.status === 200 && this.jsonResult.status_message.toLowerCase() != "no data") {
+                this.homeworkListObject = this.jsonResult.data;
+            } else {
+                console.log("Something getting wrong");
+            }
+            setTimeout(() => {
+                this.loading.hideLoader();
+            }, 1000);
+        }, (err) => {
+            console.log(err);
+            setTimeout(() => {
+                this.loading.hideLoader();
+            }, 1000);
+        });
+    };
 }

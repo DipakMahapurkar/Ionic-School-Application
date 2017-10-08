@@ -1,34 +1,34 @@
 <ion-header>
-  <ion-navbar color="primaryColor" [hideBackButton]="true">
-    <ion-title>
-      Home
-    </ion-title>
-  </ion-navbar>
-  <ion-toolbar no-padding>
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="assets/img/ic_user.svg">
-      </ion-avatar>
-      <h2>{{userData?.student_name}}</h2>
-      <h3>{{userData?.student_parent_name}}</h3>
-      <p>Class: {{userData?.student_class}}</p>
-    </ion-item>
-  </ion-toolbar>
+    <ion-navbar color="primaryColor" [hideBackButton]="true">
+        <ion-title>
+            Home
+        </ion-title>
+    </ion-navbar>
+    <ion-toolbar no-padding>
+        <ion-item>
+            <ion-avatar item-start>
+                <img src="assets/img/ic_user.svg">
+            </ion-avatar>
+            <h2>{{userData?.student_name}}</h2>
+            <h3>{{userData?.student_parent_name}}</h3>
+            <p>Class: {{userData?.student_class}}</p>
+        </ion-item>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-grid>
-    <ion-row responsive-sm>
-      <ion-col col-6 no-padding *ngFor="let item of dashboardMenus">
-        <ion-card class="cardBorderRadius" (click)="dashboardMenuClick(item.id);">
-          <ion-card-content no-padding>
-            <div class="mid">
-              <img [src]="item.image" />
-              <h2>{{item.menuName}}</h2>
-            </div>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+    <ion-grid>
+        <ion-row responsive-sm>
+            <ion-col col-6 no-padding *ngFor="let item of dashboardMenus">
+                <ion-card class="cardBorderRadius" (click)="dashboardMenuClick(item.id);">
+                    <ion-card-content no-padding>
+                        <div class="mid">
+                            <img [src]="item.image" />
+                            <h2>{{item.menuName}}</h2>
+                        </div>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>

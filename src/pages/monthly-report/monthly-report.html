@@ -1,12 +1,16 @@
 <ion-header>
-
-  <ion-navbar color="primaryColor">
-    <ion-title>Monthly Report</ion-title>
-  </ion-navbar>
-
+	<ion-navbar color="primaryColor">
+		<ion-title>Monthly Report</ion-title>
+	</ion-navbar>
 </ion-header>
 
-
-<ion-content padding>
-
+<ion-content no-padding>
+	<ion-card>
+		<ion-card-header>
+			Bar Chart
+		</ion-card-header>
+		<ion-card-content>
+			<canvas #barCanvas></canvas>
+		</ion-card-content>
+	</ion-card>
 </ion-content>
