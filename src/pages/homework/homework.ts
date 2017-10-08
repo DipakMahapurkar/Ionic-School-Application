@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, NavParams, Navbar } from 'ionic-angular';
 
 import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { PassDataServiceProvider } from '../../providers/pass-data-service/pass-data-service';
@@ -11,7 +11,6 @@ import { LoadingProvider } from '../../providers/loading/loading';
     templateUrl: 'homework.html',
 })
 export class HomeworkPage {
-
     private jsonResult: any;
     private homeworkListObject: any[];
 
@@ -19,7 +18,7 @@ export class HomeworkPage {
         public passDataServiceProvider: PassDataServiceProvider,
         private loading: LoadingProvider,
         private restapiServiceProvider: RestapiServiceProvider) {
-           
+
     }
 
     ionViewDidLoad() {

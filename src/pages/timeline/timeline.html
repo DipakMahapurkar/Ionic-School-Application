@@ -1,22 +1,21 @@
 <ion-header>
-  <ion-navbar color="primaryColor">
-    <ion-title>Timeline</ion-title>
-  </ion-navbar>
+    <ion-navbar color="primaryColor">
+        <ion-title>Timeline</ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let item of timelines">
-    <ion-card-header>
-      <h2>{{item.teacher_name}}</h2>
-      <h4>{{item.created_at | date: 'dd-MMM-yyyy'}}</h4>
-    </ion-card-header>
-    <ion-card-content>
-      <img src="{{item.timeline_image}}" />
-      <p>{{item.timeline_text}}</p>
-    </ion-card-content>
-  </ion-card>
-  <ion-fab bottom right #fab (click)="addTimeLine()">
-    <button ion-fab color="accentColor"><ion-icon name="add"></ion-icon></button>
-  </ion-fab>
-
+    <ion-card *ngFor="let item of timelines">
+        <ion-card-header>
+            <h2>{{item.teacher_name}}</h2>
+            <h4>{{item.created_at | date: 'dd-MMM-yyyy'}}</h4>
+        </ion-card-header>
+        <ion-card-content>
+            <img src="{{item.timeline_image}}" />
+            <p>{{item.timeline_text}}</p>
+        </ion-card-content>
+    </ion-card>
+    <ion-fab bottom right #fab (click)="addTimeLine()">
+        <button ion-fab color="accentColor"><ion-icon name="add"></ion-icon></button>
+    </ion-fab>
 </ion-content>
