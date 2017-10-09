@@ -1,6 +1,6 @@
 <ion-header>
     <ion-navbar color="primaryColor">
-        <ion-title text-wrap>Marksheet</ion-title>
+        <ion-title text-wrap>Exams</ion-title>
     </ion-navbar>
 </ion-header>
 
@@ -10,7 +10,7 @@
             <ion-grid (click)="getMarkSheet(item)">
                 <ion-row>
                     <ion-col col-10>
-                        <h2>{{item.examName}}</h2>
+                        <h2>{{item.exam}}</h2>
                     </ion-col>
                     <ion-col col-2 text-right align-self-center>
                         <ion-icon name="ios-arrow-forward"></ion-icon>
@@ -19,7 +19,7 @@
             </ion-grid>
         </ion-card-content>
     </ion-card>
-    <div text-center *ngIf="markSheetListObject.length === 0">
+    <div text-center *ngIf="markSheetListObject?.length === 0">
         <h4>No Result found</h4>
     </div>
 </ion-content>

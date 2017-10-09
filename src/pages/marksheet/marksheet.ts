@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 
+import { MarkSheetDetailsPage } from '../mark-sheet-details/mark-sheet-details';
+
+import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
 import { PassDataServiceProvider } from '../../providers/pass-data-service/pass-data-service';
 import { LoadingProvider } from '../../providers/loading/loading';
 
@@ -12,18 +14,7 @@ import { LoadingProvider } from '../../providers/loading/loading';
 })
 export class MarksheetPage {
     private jsonResult: any;
-    private markSheetListObject: Array<{ id: number, examName: string }> = [
-        { id: 1, examName: "Exam1" },
-        { id: 2, examName: "Exam2" },
-        { id: 3, examName: "Exam3" },
-        { id: 4, examName: "Exam4" },
-        { id: 5, examName: "Exam5" },
-        { id: 6, examName: "Exam6" },
-        { id: 7, examName: "Exam7" },
-        { id: 8, examName: "Exam8" },
-        { id: 9, examName: "Exam9" },
-        { id: 10, examName: "Exam10" },
-    ];
+    private markSheetListObject: any[];
     private studentId: any;
 
     constructor(public navCtrl: NavController,
@@ -42,7 +33,8 @@ export class MarksheetPage {
     }
 
     getStudentMarkList(rollNumber: any) {
-        this.restapiServiceProvider.getAPICall("marksheetapi.php/examlist/?roll_no=" + rollNumber).then((result: any) => {
+        this.restapiServiceProvider.getAPICall("marksheetapi.php/examlist/?roll_no=" + "8002").then((result: any) => {
+            this.markSheetListObject = [];
             this.jsonResult = result;
             if (this.jsonResult.status === 200 && this.jsonResult.status_message.toLowerCase() != "no data") {
                 this.markSheetListObject = this.jsonResult.data;
@@ -61,6 +53,9 @@ export class MarksheetPage {
     }
 
     getMarkSheet(item: any) {
+        item['studentRollNumber'] = this.studentId;
         console.log("Mark sheet data = " + JSON.stringify(item));
+        this.passDataServiceProvider.setData(item, "EXAM_DATA");
+        this.navCtrl.push(MarkSheetDetailsPage);
     }
 }

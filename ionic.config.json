@@ -1,8 +1,8 @@
 {
-  "name": "SchoolApp",
-  "app_id": "",
-  "type": "ionic-angular",
-  "integrations": {
-    "cordova": {}
-  }
+    "name": "SchoolApp",
+    "app_id": "",
+    "type": "ionic-angular",
+    "integrations": {
+        "cordova": {}
+    }
 }

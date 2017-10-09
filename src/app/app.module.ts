@@ -19,7 +19,8 @@ import { ApplicationPage } from '../pages/application/application';
 import { FeeReminderPage } from '../pages/fee-reminder/fee-reminder';
 import { HomeworkPage } from '../pages/homework/homework';
 import { MarksheetPage } from '../pages/marksheet/marksheet';
-import { NoticePage } from '../pages/notice/notice';
+import { MarkSheetDetailsPage } from '../pages//mark-sheet-details/mark-sheet-details';
+import { NoticePage } from '../pages/notice/notice'; 
 import { TimelinePage } from '../pages/timeline/timeline';
 import { TimetablePage } from '../pages/timetable/timetable';
 import { YearlySchedulePage } from '../pages/yearly-schedule/yearly-schedule';
@@ -53,6 +54,7 @@ import { TextAvatarDirective } from '../directives/text-avatar/text-avatar';
         YearlySchedulePage,
         AddTimelinePage,
         TextAvatarDirective,
+        MarkSheetDetailsPage
     ],
     imports: [
         HttpModule,
@@ -96,6 +98,7 @@ import { TextAvatarDirective } from '../directives/text-avatar/text-avatar';
         TimetablePage,
         YearlySchedulePage,
         AddTimelinePage,
+        MarkSheetDetailsPage
     ],
     providers: [
         StatusBar,

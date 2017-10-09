@@ -7,14 +7,14 @@ declare let __DEV__: boolean;
 
 // Ionic
 interface PageObj {
-  title: string;
-  component: any;
-  icon: string;
-  index?: number;
+    title: string;
+    component: any;
+    icon: string;
+    index?: number;
 }
 
 interface Slide {
-  title: string;
-  description: string;
-  image: string;
+    title: string;
+    description: string;
+    image: string;
 }
