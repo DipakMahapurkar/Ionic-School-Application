@@ -1,30 +1,36 @@
 <ion-header>
-  <ion-navbar color="primaryColor">
-    <ion-title>Application</ion-title>
-    <ion-buttons end *ngIf="isStudent">
-      <button ion-button icon-only (click)="postStudentApplication()" color="primary">
+    <ion-navbar color="primaryColor">
+        <ion-title>Application</ion-title>
+        <ion-buttons end *ngIf="isStudent">
+            <button ion-button icon-only (click)="postStudentApplication()" color="white">
         <ion-icon name="checkmark"></ion-icon>
       </button>
-    </ion-buttons>
-  </ion-navbar>
+        </ion-buttons>
+    </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let item of applicationListObject">
-    <ion-card-header>
-      <ion-row responsive-sm>
-      <ion-col col-9 align-self-start class="colPadding0">
-        <h2>{{item.student_name}}</h2>
-        <p>Roll Number: {{item.student_roll_number}}</p>
-      </ion-col>
-      <ion-col col-3>
-        <p>{{item.created_at | date: 'dd-MMM-yyyy'}}</p>
-      </ion-col>
-      </ion-row>
-    </ion-card-header>
-    <ion-card-content>
-      {{item.application_description}}
-    </ion-card-content>
-  </ion-card>
-  <ion-textarea *ngIf="isStudent" placeholder="Enter application content here..." rows="5" [(ngModel)]="application.description"></ion-textarea>
+    <ion-card *ngFor="let item of applicationListObject">
+        <ion-card-header>
+            <ion-row responsive-sm>
+                <ion-col col-9 align-self-start class="colPadding0">
+                    <h2>{{item.student_name}}</h2>
+                    <p>Roll Number: {{item.student_roll_number}}</p>
+                </ion-col>
+                <ion-col col-3>
+                    <p>{{item.created_at | date: 'dd-MMM-yyyy'}}</p>
+                </ion-col>
+            </ion-row>
+        </ion-card-header>
+        <ion-card-content>
+            {{item.application_description}}
+        </ion-card-content>
+    </ion-card>
+    <ion-item>
+        <ion-textarea *ngIf="isStudent" placeholder="Enter your application for class teacher." rows="5" [(ngModel)]="application.description"></ion-textarea>
+    </ion-item>
+
+    <div text-center *ngIf="applicationListObject?.length === 0 && !isStudent">
+        <h4>No Result found</h4>
+    </div>
 </ion-content>

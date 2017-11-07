@@ -32,6 +32,7 @@ import { PassDataServiceProvider } from '../providers/pass-data-service/pass-dat
 import { LoadingProvider } from '../providers/loading/loading';
 import { CommonAlertProvider } from '../providers/common-alert/common-alert';
 import { TextAvatarDirective } from '../directives/text-avatar/text-avatar';
+import { AlertProvider } from '../providers/alert/alert';
 
 
 @NgModule({
@@ -107,7 +108,8 @@ import { TextAvatarDirective } from '../directives/text-avatar/text-avatar';
         RestapiServiceProvider,
         PassDataServiceProvider,
         LoadingProvider,
-        CommonAlertProvider
+        CommonAlertProvider,
+    AlertProvider
     ]
 })
 export class AppModule { }
