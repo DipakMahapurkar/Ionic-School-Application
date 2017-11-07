@@ -25,17 +25,18 @@ export class MarkSheetDetailsPage {
 
     ionViewCanEnter() {
         console.log("in ionViewCanEnter")
-        return new Promise((resolve, reject) => {
-            if (this.navParams.get('fail')) {
-                reject(true);
-            } else {
+        // return new Promise((resolve, reject) => {
+        //     if (this.navParams.get('fail')) {
+        //         reject(true);
+        //     } else {
+            
                 this.loading.showLoader();
                 this.passDataServiceProvider.getData("EXAM_DATA").then((data: any) => {
                     console.log(JSON.stringify(data));
                     this.getExamDetails(data.studentRollNumber, data.exam);
                 });
-            }
-        });
+        //     }
+        // });
     }
 
     ionViewDidEnter() {

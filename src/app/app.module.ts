@@ -33,6 +33,7 @@ import { LoadingProvider } from '../providers/loading/loading';
 import { CommonAlertProvider } from '../providers/common-alert/common-alert';
 import { TextAvatarDirective } from '../directives/text-avatar/text-avatar';
 import { AlertProvider } from '../providers/alert/alert';
+import { HideFabDirective } from '../directives/hide-fab/hide-fab';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { AlertProvider } from '../providers/alert/alert';
         YearlySchedulePage,
         AddTimelinePage,
         TextAvatarDirective,
-        MarkSheetDetailsPage
+        MarkSheetDetailsPage,
+    HideFabDirective
     ],
     imports: [
         HttpModule,
