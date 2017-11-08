@@ -15,6 +15,10 @@
             <p>{{item.timeline_text}}</p>
         </ion-card-content>
     </ion-card>
+
+    <div text-center *ngIf="timelines?.length === 0">
+        <h4>No Result found</h4>
+    </div>
     <ion-fab bottom right #fab (click)="addTimeLine()">
         <button ion-fab color="accentColor"><ion-icon name="add"></ion-icon></button>
     </ion-fab>

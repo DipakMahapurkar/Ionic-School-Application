@@ -13,6 +13,9 @@ import { LoadingProvider } from '../../providers/loading/loading';
 })
 export class MarkSheetDetailsPage {
     public jsonResult: any;
+    private studentName: string;
+    private examName: string;
+    private markSheetObject: any[];
 
     constructor(public navCtrl: NavController,
         public navParams: NavParams,
@@ -21,33 +24,24 @@ export class MarkSheetDetailsPage {
         private loading: LoadingProvider) {
     }
 
-
-
-    ionViewCanEnter() {
-        console.log("in ionViewCanEnter")
-        // return new Promise((resolve, reject) => {
-        //     if (this.navParams.get('fail')) {
-        //         reject(true);
-        //     } else {
-            
-                this.loading.showLoader();
-                this.passDataServiceProvider.getData("EXAM_DATA").then((data: any) => {
-                    console.log(JSON.stringify(data));
-                    this.getExamDetails(data.studentRollNumber, data.exam);
-                });
-        //     }
-        // });
-    }
-
     ionViewDidEnter() {
         console.log('ionViewDidLoad MarkSheetDetailsPage');
+        this.loading.showLoader();
+        this.passDataServiceProvider.getData("EXAM_DATA").then((data: any) => {
+            console.log(JSON.stringify(data));
+            this.studentName = data.studentName;
+            this.examName = data.exam;
+            this.getExamDetails(data.studentRollNumber, data.exam);
+        });
     }
 
     getExamDetails(rollNumber: string, examName: string) {
-        this.restapiServiceProvider.getAPICall("marksheetapi.php/marksheet?roll_no=" + rollNumber + "&exam=" + examName).then((result: any) => {
+        this.restapiServiceProvider.getAPICall("marksheetapi.php/marksheet?roll_no=" + "8002" + "&exam=" + examName).then((result: any) => {
+            this.markSheetObject = [];
             this.jsonResult = result;
             if (this.jsonResult.status === 200 && this.jsonResult.status_message.toLowerCase() != "no data") {
                 console.log(JSON.stringify(this.jsonResult));
+                this.markSheetObject = this.jsonResult.data;
             } else {
                 console.log("Something getting wrong");
             }

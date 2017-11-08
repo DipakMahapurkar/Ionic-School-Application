@@ -15,7 +15,8 @@ import { LoadingProvider } from '../../providers/loading/loading';
 export class MarksheetPage {
     private jsonResult: any;
     private markSheetListObject: any[];
-    private studentId: any;
+    private studentId: string;
+    private studentName: string;
 
     constructor(public navCtrl: NavController,
         public navParams: NavParams,
@@ -28,6 +29,7 @@ export class MarksheetPage {
         this.loading.showLoader();
         this.passDataServiceProvider.getProfile().then((data: any) => {
             this.studentId = data[0].student_roll_number;
+            this.studentName = data[0].student_name;
             this.getStudentMarkList(this.studentId);
         });
     }
@@ -54,6 +56,7 @@ export class MarksheetPage {
 
     getMarkSheet(item: any) {
         item['studentRollNumber'] = this.studentId;
+        item['studentName'] = this.studentName;
         console.log("Mark sheet data = " + JSON.stringify(item));
         this.passDataServiceProvider.setData(item, "EXAM_DATA");
         this.navCtrl.push(MarkSheetDetailsPage);

@@ -1,13 +1,29 @@
 <ion-header>
     <ion-navbar color="primaryColor">
-        <ion-title>Mark Sheet</ion-title>
+        <ion-title>{{studentName}}</ion-title>
     </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
-    <div text-center *ngIf="jsonResult.status_message.toLowerCase() === 'no data'">
+
+    <div text-center *ngIf="markSheetObject?.length != 0">
+        <h5 class="greyColor">{{examName}}</h5>
+
+        <ion-row responsive-md>
+            <ion-col col-4 no-padding>
+                <p>Subjects</p>
+            </ion-col>
+            <ion-col col-4 no-padding>
+                <p>Max. Marks</p>
+            </ion-col>
+            <ion-col col-4 no-padding>
+                <p>Marks Obtained</p>
+            </ion-col>
+        </ion-row>
+    </div>
+
+    <div text-center *ngIf="markSheetObject?.length === 0">
         <h4>No Result found</h4>
     </div>
 </ion-content>
